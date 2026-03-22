@@ -1,0 +1,4 @@
+Running: xsim.dir/fpu_decoding_behav/xsimk.exe -simmode gui -wdb fpu_decoding_behav.wdb -simrunnum 0 -socket 54439
+Design successfully loaded
+Design Loading Memory Usage: 10304 KB (Peak: 10304 KB)
+Design Loading CPU Usage: 15 ms
