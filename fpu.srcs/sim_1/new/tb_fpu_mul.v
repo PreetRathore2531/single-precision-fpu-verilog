@@ -19,39 +19,37 @@ fpu_mul uut (
 );
 
 initial begin
-    $display("Starting Test...");
-
-    // 1. Normal × Normal
+    //Normal x Normal
     a = 32'h40400000; // 3.0
     b = 32'h40000000; // 2.0
     #10;
 
-    // 2. Zero × Number
+    //Zero x Number
     a = 32'h00000000;
-    b = 32'h40400000;
+    b = 32'h40400000; // 3.0
     #10;
 
-    // 3. Infinity × Number
+    //Infinity x Number
     a = 32'h7F800000;
-    b = 32'h40000000;
+    b = 32'h40000000; // 2.0
     #10;
 
-    // 4. Infinity × Zero ? NaN
+    //Infinity x Zero
     a = 32'h7F800000;
     b = 32'h00000000;
     #10;
 
-    // 5. Subnormal × Normal
+    //Subnormal x Normal
     a = 32'h00000001; // smallest subnormal
     b = 32'h3F800000; // 1.0
     #10;
 
-    // 6. Overflow ? Infinity
-    a = 32'h7F7FFFFF; // max float
+    //Overflow Infinity
+    a = 32'h7F7FFFFF; // largest float
     b = 32'h40000000; // ×2
     #10;
 
-    // 7. Underflow ? Zero
+    // 7. Underflow -> Zero
     a = 32'h00800000; // smallest normal
     b = 32'h00800000;
     #10;
@@ -62,7 +60,6 @@ initial begin
     #10;
     
     $finish;
-    $monitor("a=%h b=%h y=%h normal=%b subnormal=%b zero=%b inf=%b", a,b,y,normal,subnormal,zero,inf);
 end
 
 endmodule
